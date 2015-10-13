@@ -4,6 +4,7 @@ Written by Aaron Filson for B34 Code Fellows Seattle Boot Camp.
 
 Initial work: Starting on domain analysis and user stories.
 
+
 Assignment description for Monday, October 12.
 New week, new project!
 

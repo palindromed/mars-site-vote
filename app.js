@@ -77,11 +77,15 @@ this.point2.addEventListener('click', this.handleClickOnTwo);
     if (didReset) {
       imgArray[ser].numberOfVotes++;
       didReset = false;
+          //highlight the image
+      var makeAPointerTo = document.getElementById('clickOne');
+      makeAPointerTo.className = 'highlight';
+
+
     }
 
     console.log('votes is : ' + imgArray[ser].numberOfVotes);
 
-    //highlight the image
 
 
   };
@@ -96,10 +100,14 @@ this.point2.addEventListener('click', this.handleClickOnTwo);
     if (didReset) {
       imgArray[ser].numberOfVotes++;
       didReset = false;
+          //highlight the site that was voted for
+      var makeAPointerTo = document.getElementById('clickTwo');
+      makeAPointerTo.className = 'highlight';
+
     }
     console.log('votes is : ' + imgArray[ser].numberOfVotes);
 
-    //highlight the site that was voted for
+
 
   };
 
@@ -111,7 +119,10 @@ function handleTheReset (event) {
   console.log('should now reset');
   didReset = true;
   document.getElementById('clickOne').innerHTML = null;
+  document.getElementById('clickOne').className = null;
   document.getElementById('clickTwo').innerHTML = null;
+  document.getElementById('clickTwo').className = null;
+
   pageOneTracker.displayImg();
 
 }
