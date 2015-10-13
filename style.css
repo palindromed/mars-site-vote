@@ -1,0 +1,12 @@
+
+h1, h2, h3 {
+  font-family: 'Droid Serif' Times Serif;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+* {
+  border: 1px solid navy;
+}
