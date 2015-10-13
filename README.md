@@ -11,7 +11,7 @@ object. Images are displayed.
 
 Update 2: Votes are counted, image highlighted, reset / next works.
 
-Update 3: Starting on chart.
+Update 3: Starting on chart. Added prototyping. Refactored click handler.
 
 
 Assignment description for Monday, October 12.
