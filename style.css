@@ -1,0 +1,26 @@
+
+h1, h2, h3 {
+  font-family: 'Droid Serif' Times Serif;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+/*Outer space color palette, from adobe cc*/
+/*#2b448c
+#2a558c
+#5ab8f3
+#a0e3f2
+#0d0d0d
+*/
+
+.highlight {
+  border: 5px solid green;
+  border-radius: 2px;
+}
+
+#resetP {
+  border: 10px solid green;
+  border-radius: 5px;
+}
