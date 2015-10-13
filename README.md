@@ -1,8 +1,17 @@
 Readme for the Mars Site Vote website project
+
+
 Written by Aaron Filson for B34 Code Fellows Seattle Boot Camp.
 
 
 Initial work: Starting on domain analysis and user stories.
+
+Update 1: Created files, started work of making image objects to give to a tracker
+object. Images are displayed.
+
+Update 2: Votes are counted, image highlighted, reset / next works.
+
+Update 3: Starting on chart.
 
 
 Assignment description for Monday, October 12.

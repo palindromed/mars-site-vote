@@ -1,4 +1,5 @@
 //app.js for the Mars Site Vote project.
+
 // By Aaron Filson
 
 //The first version of the project will have the user of the site click
@@ -23,17 +24,17 @@ var imgFileLocations = [
 var didReset = true;
 
 var imgObj = function (pImgFileLoc){
-this.fileNameForImg = pImgFileLoc;
-this.numberOfVotes = null;
+  this.fileNameForImg = pImgFileLoc;
+  this.numberOfVotes = null;
 };
-//arg
+
 var whichSitesNow = [0 , 1];
 var imgArray = [];
 for (var i = 0; i < imgFileLocations.length; i++) {
   imgArray[i] = new imgObj(imgFileLocations[i]);
 }
 
-function voteTracker () {
+ var VoteTracker = function() {
   this.findTagOne = document.getElementById('clickOne');
   this.findTagTwo = document.getElementById('clickTwo');
   this.resetP = document.getElementById('resetP');
@@ -43,15 +44,13 @@ function voteTracker () {
     var k;
     do{
       var loop = false;
-      if ((k = (Math.floor(Math.random()*(imgFileLocations.length - 1)))) == j) {
+      if ((k = (Math.floor(Math.random()*(imgFileLocations.length)))) == j) {
         loop = true; //if they match, loop and try again.
       } else {
         return [j, k]; //return the two indexes of random sites to land at.
       }
     } while (loop);
   };
-
-
 
   this.displayImg = function () {
     whichSitesNow = this.randomPickTwo();
@@ -62,12 +61,11 @@ function voteTracker () {
 
     this.point2.innerHTML = "<img src=\'" + imgArray[whichSitesNow[1]].fileNameForImg
      + "\' alt='The second site to consider' title='This is the second landing site to consider for a mission to Mars. Click on the image to vote in favor.' \>";
-  this.point1.addEventListener('click', this.handleClickOnOne);
-this.point2.addEventListener('click', this.handleClickOnTwo);
-
+    this.point1.addEventListener('click', this.handleClickOnOne);
+    this.point2.addEventListener('click', this.handleClickOnTwo);
 
   };
-
+  //call the method right after it is declared.
   this.displayImg();
 
   this.handleClickOnOne = function (event){
@@ -80,22 +78,14 @@ this.point2.addEventListener('click', this.handleClickOnTwo);
           //highlight the image
       var makeAPointerTo = document.getElementById('clickOne');
       makeAPointerTo.className = 'highlight';
-
-
     }
-
     console.log('votes is : ' + imgArray[ser].numberOfVotes);
-
-
-
   };
 
   this.handleClickOnTwo = function (event){
 
-
     console.log('in the handleClickOnTwo - ');
     var ser = whichSitesNow[1];
-
     //add to the counter for the landing site
     if (didReset) {
       imgArray[ser].numberOfVotes++;
@@ -103,15 +93,9 @@ this.point2.addEventListener('click', this.handleClickOnTwo);
           //highlight the site that was voted for
       var makeAPointerTo = document.getElementById('clickTwo');
       makeAPointerTo.className = 'highlight';
-
     }
     console.log('votes is : ' + imgArray[ser].numberOfVotes);
-
-
-
   };
-
-
 };
 
 function handleTheReset (event) {
@@ -124,15 +108,24 @@ function handleTheReset (event) {
   document.getElementById('clickTwo').className = null;
 
   pageOneTracker.displayImg();
-
 }
 
-
 //make the object, it calls all of the other constructors
-var pageOneTracker = new voteTracker();
+var pageOneTracker = new VoteTracker();
 
 //attach the listeners
 pageOneTracker.point1.addEventListener('click', pageOneTracker.handleClickOnOne);
 pageOneTracker.point2.addEventListener('click', pageOneTracker.handleClickOnTwo);
 pageOneTracker.resetP.addEventListener('click', handleTheReset);
 
+//chart section
+var ctx = document.getElementById('voteChart').getContext("2d");
+var data = {
+  labels: ['site1', 'site2', 'site3', 'site4', 'site5', 'site6', 'site7', 'site8','site9', 'site10', 'site11', 'site12', 'site13'],
+
+  datasets: []
+};
+
+var options = {};
+
+var voteChart = new Chart(ctx).Bar(data, options);
