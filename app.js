@@ -25,7 +25,7 @@ var didReset = true;
 
 var ImgObj = function (pImgFileLoc){
   this.fileNameForImg = pImgFileLoc;
-  this.numberOfVotes = null;
+  this.numberOfVotes = 0;
 };
 
 var whichSitesNow = [0 , 1];
@@ -56,6 +56,37 @@ var VoteTracker = function() {
   this.displayImg();
 };
 
+//chart section
+VoteTracker.prototype.makeChart = function (smoke) {
+  var fire = smoke;
+  console.log(fire);
+  var ctx = document.getElementById('voteChart').getContext("2d");
+  var data = {
+    labels: ['site1', 'site2', 'site3', 'site4', 'site5', 'site6', 'site7', 'site8','site9', 'site10', 'site11', 'site12', 'site13', 'site14'],
+    datasets: [
+    {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.5)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: []
+        },
+
+    ]
+  };
+  var outgoing = this.populateChartData(data);
+  var options = {};
+  var voteChart = new Chart(ctx).Bar(outgoing, options);
+};
+
+VoteTracker.prototype.populateChartData = function (pData) {
+  for (var i = 0; i < imgArray.length; i++) {
+    pData.datasets[0].data[i] = imgArray[i].numberOfVotes;
+  };
+  return pData;
+}
+
 //clicks on img go here, check which one is target, flip didReset and ++vote.
 VoteTracker.prototype.handleImgClicks = function (event) {
   console.log('in handleImgClicks method -');
@@ -67,7 +98,8 @@ VoteTracker.prototype.handleImgClicks = function (event) {
     event.currentTarget.parentElement.className = 'highlight';
   }
   console.log('votes of clicked img is : ' + imgArray[ser].numberOfVotes);
-}
+  raiseTheChartFlag();
+};
 
 VoteTracker.prototype.randomPickTwo = function () {
   var j = Math.ceil(Math.random()*(imgFileLocations.length - 1));
@@ -94,6 +126,12 @@ function handleTheReset (event) {
   pageOneTracker.displayImg();
 }
 
+//silly loop because I don't want to deal with scope issues anymore
+function raiseTheChartFlag() {
+  console.log('time for chart');
+  pageOneTracker.makeChart('MOOOOOOOO');
+}
+
 //make the object, it calls all of the other constructors
 var pageOneTracker = new VoteTracker();
 
@@ -102,14 +140,3 @@ pageOneTracker.point1.addEventListener('click', pageOneTracker.handleImgClicks);
 pageOneTracker.point2.addEventListener('click', pageOneTracker.handleImgClicks);
 pageOneTracker.resetP.addEventListener('click', handleTheReset);
 
-//chart section
-var ctx = document.getElementById('voteChart').getContext("2d");
-var data = {
-  labels: ['site1', 'site2', 'site3', 'site4', 'site5', 'site6', 'site7', 'site8','site9', 'site10', 'site11', 'site12', 'site13'],
-
-  datasets: []
-};
-
-var options = {};
-
-var voteChart = new Chart(ctx).Bar(data, options);
