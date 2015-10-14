@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- <link rel="script" href="https://cdnjs.com/libraries/chart.js"> -->
   <link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
-  <!-- trying the nasa stylesheet -->
-  <link rel="stylesheet" href="http://www.jpl.nasa.gov/assets/stylesheets/manifest.css" type='text/css'>
-  <link rel="stylesheet" href="style.css" type="text/css">
+  <link rel="stylesheet" type="text/css" href="templates/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="templates/css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <title>Mars Site Vote</title>
-
-
 </head>
 <body>
-  <header><h1>This is my header</h1></header>
+  <header><h1>Mars Site Voting</h1></header>
   <main>
-    This is the main
+    <p>Below are two possible sites on Mars to land for our next mission. Please
+     click on your preferred site of the two presented options.</p>
 
     <article id='image1'>
     <p id='clickOne'></p>
@@ -23,17 +21,17 @@
     <p id='clickTwo'></p>
     </article>
 
+    <p id='resetP'>Click here for the next pair of sites!</p>
+
     <article>
       <canvas id='voteChart' width="400" height="400"></canvas>
-
     </article>
-
-    <p id='resetP'>Click here for the next pair of sites!</p>
 
     <script src='Chart.js'></script>
     <script src='app.js'></script>
 
   </main>
-  <footer>This is the footer</footer>
+  <footer>
+  </footer>
 </body>
 </html>

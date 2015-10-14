@@ -21,6 +21,55 @@ h1 {
 }
 
 #resetP {
-  border: 10px solid green;
-  border-radius: 5px;
+  border : 10px solid green;
+  border-radius : 5px;
+  width : 90px;
+  height : 80px;
+  position: center;
+  text-align: center;
+  margin-top : 140px;
+  margin-left : auto;
+  min-height: 80px;
+  min-width: 90px;
+  margin-right : auto;
+  float: center;
+  display : relative;
+}
+
+p > div {
+  width: 450px;
+  height: 350px;
+  margin: auto;
+}
+
+div > img {
+  width : 400px;
+  height: 300px;
+  margin: auto;
+}
+
+article {
+  padding: auto;
+  width : 500px;
+  height: 400px;
+}
+
+#image1 {
+  float: left;
+}
+
+#image2 {
+  position: relative;
+  display: inline;
+  float:right;
+}
+
+canvas {
+  display : block;
+  margin : 25px;
+}
+
+footer {
+  position : bottom;
+  margin: auto;
 }
