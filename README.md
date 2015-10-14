@@ -15,6 +15,10 @@ Update 3: Starting on chart. Added prototyping. Refactored click handler.
 
 Update 4: Working on chart, using default styles.
 
+Update 5: Tested performance, checked logic, cleaned up code style, removed console
+logging.
+
+
 
 
 Assignment description for Monday, October 12.
