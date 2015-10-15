@@ -1,75 +1,66 @@
+/*Outer space color palette, from adobe cc*/
+/*
+#2b448c
+#2a558c
+#5ab8f3
+#a0e3f2
+#0d0d0d
+*/
+body {
+  background-color: #5ab8f3;
+}
 
 h1, h2, h3 {
   font-family: 'Droid Serif' Times Serif;
+  color: #0d0d0d;
 }
 
 h1 {
   font-size: 3em;
 }
 
-/*Outer space color palette, from adobe cc*/
-/*#2b448c
-#2a558c
-#5ab8f3
-#a0e3f2
-#0d0d0d
-*/
-
 .highlight {
-  border: 5px solid green;
+  border: 5px solid #a0e3f2;
   border-radius: 2px;
 }
 
-#resetP {
-  border : 10px solid green;
-  border-radius : 5px;
-  width : 90px;
-  height : 80px;
-  position: center;
-  text-align: center;
-  margin-top : 140px;
-  margin-left : auto;
-  min-height: 80px;
-  min-width: 90px;
-  margin-right : auto;
-  float: center;
-  display : relative;
-}
-
 p > div {
-  width: 450px;
-  height: 350px;
   margin: auto;
 }
 
 div > img {
-  width : 400px;
+  width: 400px;
   height: 300px;
   margin: auto;
-}
-
-article {
-  padding: auto;
-  width : 500px;
-  height: 400px;
+  padding: 15px;
 }
 
 #image1 {
+  position: relative;
   float: left;
+  display: inline;
 }
 
 #image2 {
   position: relative;
   display: inline;
-  float:right;
+  float: right;
 }
 
 canvas {
-  display : block;
-  margin : 25px;
+  display: block;
+  margin: 10px;
 }
 
 footer {
-  position : bottom;
+  position: bottom;
   margin: auto;
+}
+
+header {
+  background-color: #2a558c;
+}
+
+p {
+  margin-top: 5px;
 }

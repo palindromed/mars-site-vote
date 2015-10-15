@@ -87,6 +87,7 @@ VoteTracker.prototype.handleImgClicks = function (event) {
     event.currentTarget.parentElement.className = 'highlight';
   }
   raiseTheChartFlag();
+  handleTheReset(event);
 };
 
 VoteTracker.prototype.randomPickTwo = function () {
@@ -121,4 +122,4 @@ var pageOneTracker = new VoteTracker();
 
 pageOneTracker.point1.addEventListener('click', pageOneTracker.handleImgClicks);
 pageOneTracker.point2.addEventListener('click', pageOneTracker.handleImgClicks);
-pageOneTracker.resetP.addEventListener('click', handleTheReset);
+
