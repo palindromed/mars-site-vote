@@ -10,20 +10,20 @@ var ImgObj = function (pImgFileLoc){
 };
 
 var imgFileLocations = [
-"img/658668main_pia15685-full_full.jpg",
-"img/658682main_pia15686_full.jpg",
-"img/667877main_Grotzinger-1PIA15690_800-600.jpg",
-"img/675225main_pia16029-43_800-600.jpg",
-"img/676026main_pia16052-color-43_800-600.jpg",
-"img/676039main_pia16053-color-43_800-600.jpg",
-"img/678276main_pia16077-43_800-600.jpg",
-"img/734386main_pia16768-43_800-600.jpg",
-"img/PIA17766-800x600.jpg",
-"img/PIA17946-800x600.jpg",
-"img/PIA18083-800x600.jpg",
-"img/PIA19803-800x600.jpg",
-"img/PSP_008579_9020_descent_800-600.jpg",
-"img/glacialcraters_mro.jpg"
+  "img/658668main_pia15685-full_full.jpg",
+  "img/658682main_pia15686_full.jpg",
+  "img/667877main_Grotzinger-1PIA15690_800-600.jpg",
+  "img/675225main_pia16029-43_800-600.jpg",
+  "img/676026main_pia16052-color-43_800-600.jpg",
+  "img/676039main_pia16053-color-43_800-600.jpg",
+  "img/678276main_pia16077-43_800-600.jpg",
+  "img/734386main_pia16768-43_800-600.jpg",
+  "img/PIA17766-800x600.jpg",
+  "img/PIA17946-800x600.jpg",
+  "img/PIA18083-800x600.jpg",
+  "img/PIA19803-800x600.jpg",
+  "img/PSP_008579_9020_descent_800-600.jpg",
+  "img/glacialcraters_mro.jpg"
 ];
 //gobal vars etc
 var didReset = true;
@@ -58,10 +58,10 @@ VoteTracker.prototype.makeChart = function () {
     datasets: [
       {
         label: "Voting Set One, Round One",
-        fillColor: "rgba(220,220,220,0.5)",
-        strokeColor: "rgba(220,220,220,0.8)",
-        highlightFill: "rgba(220,220,220,0.75)",
-        highlightStroke: "rgba(220,220,220,1)",
+        fillColor: "#0d0d0d",
+        strokeColor: "#5ab8f3",
+        highlightFill: "#a0e3f2",
+        highlightStroke: "#2a558c",
         data: []
       },
     ]
@@ -103,6 +103,39 @@ VoteTracker.prototype.randomPickTwo = function () {
   } while (loop);
 };
 
+VoteTracker.prototype.storeData = function (ev) {
+  localStorage.setItem('superKey', JSON.stringify(imgArray) );
+  console.log('in store');
+};
+
+VoteTracker.prototype.retrieveData = function(ev) {
+  var temp = localStorage.getItem('superKey');
+  if(temp != 'null') {
+    imgArray = JSON.parse( temp );
+  }
+  raiseTheChartFlag();
+  console.log('in retrieve');
+};
+
+VoteTracker.prototype.resetData = function (ev){
+  document.getElementById('confirmButton').className = null;
+  document.getElementById('cancel').className = null;
+  console.log('in reset');
+};
+
+VoteTracker.prototype.confirmData = function (ev) {
+  localStorage.setItem('superKey', 'null');
+  document.getElementById('confirmButton').className = "hidden";
+  document.getElementById('cancel').className = "hidden";
+  console.log('in confirm');
+};
+
+VoteTracker.prototype.cancelReset = function (ev) {
+  document.getElementById('confirmButton').className = "hidden";
+  document.getElementById('cancel').className = "hidden";
+  console.log('in cancel');
+};
+
 function handleTheReset (event) {
   didReset = true;
   document.getElementById('clickOne').innerHTML = null;
@@ -123,3 +156,8 @@ var pageOneTracker = new VoteTracker();
 pageOneTracker.point1.addEventListener('click', pageOneTracker.handleImgClicks);
 pageOneTracker.point2.addEventListener('click', pageOneTracker.handleImgClicks);
 
+document.getElementById('storeButton').addEventListener('click', pageOneTracker.storeData);
+document.getElementById('retrieveButton').addEventListener('click', pageOneTracker.retrieveData);
+document.getElementById('resetButton').addEventListener('click', pageOneTracker.resetData);
+document.getElementById('confirmButton').addEventListener('click', pageOneTracker.confirmData);
+document.getElementById('cancel').addEventListener('click', pageOneTracker.cancelReset);
