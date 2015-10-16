@@ -9,6 +9,7 @@ var ImgObj = function (pImgFileLoc){
   this.numberOfVotes = 0;
 };
 
+//gobal vars
 var imgFileLocations = [
   "img/658668main_pia15685-full_full.jpg",
   "img/658682main_pia15686_full.jpg",
@@ -25,7 +26,6 @@ var imgFileLocations = [
   "img/PSP_008579_9020_descent_800-600.jpg",
   "img/glacialcraters_mro.jpg"
 ];
-//gobal vars etc
 var didReset = true;
 var whichSitesNow = [0 , 1];
 var imgArray = [];
@@ -54,7 +54,7 @@ var VoteTracker = function() {
 VoteTracker.prototype.makeChart = function () {
   var ctx = document.getElementById('voteChart').getContext("2d");
   var data = { //beware, hardcoded to 14 landing sites
-    labels: ['site1', 'site2', 'site3', 'site4', 'site5', 'site6', 'site7', 'site8','site9', 'site10', 'site11', 'site12', 'site13', 'site14'],
+    labels: ['Site1', 'Site2', 'Site3', 'Site4', 'Site5', 'Site6', 'Site7', 'Site8','Site9', 'Site10', 'Site11', 'Site12', 'Site13', 'Site14'],
     datasets: [
       {
         label: "Voting Set One, Round One",
@@ -104,8 +104,7 @@ VoteTracker.prototype.randomPickTwo = function () {
 };
 
 VoteTracker.prototype.storeData = function (ev) {
-  localStorage.setItem('superKey', JSON.stringify(imgArray) );
-  console.log('in store');
+  localStorage.setItem('superKey', JSON.stringify(imgArray));
 };
 
 VoteTracker.prototype.retrieveData = function(ev) {
@@ -114,26 +113,22 @@ VoteTracker.prototype.retrieveData = function(ev) {
     imgArray = JSON.parse( temp );
   }
   raiseTheChartFlag();
-  console.log('in retrieve');
 };
 
 VoteTracker.prototype.resetData = function (ev){
   document.getElementById('confirmButton').className = null;
   document.getElementById('cancel').className = null;
-  console.log('in reset');
 };
 
 VoteTracker.prototype.confirmData = function (ev) {
   localStorage.setItem('superKey', 'null');
   document.getElementById('confirmButton').className = "hidden";
   document.getElementById('cancel').className = "hidden";
-  console.log('in confirm');
 };
 
 VoteTracker.prototype.cancelReset = function (ev) {
   document.getElementById('confirmButton').className = "hidden";
   document.getElementById('cancel').className = "hidden";
-  console.log('in cancel');
 };
 
 function handleTheReset (event) {
@@ -142,7 +137,6 @@ function handleTheReset (event) {
   document.getElementById('clickOne').className = null;
   document.getElementById('clickTwo').innerHTML = null;
   document.getElementById('clickTwo').className = null;
-
   pageOneTracker.displayImg();
 }
 
@@ -152,7 +146,7 @@ function raiseTheChartFlag() {
 
 //make the object, it calls all of the other constructors
 var pageOneTracker = new VoteTracker();
-
+//add listeners to the elements we want to get events from
 pageOneTracker.point1.addEventListener('click', pageOneTracker.handleImgClicks);
 pageOneTracker.point2.addEventListener('click', pageOneTracker.handleImgClicks);
 
