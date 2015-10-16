@@ -1,6 +1,6 @@
 This is a file to express the user stories for the Mars Site Vote project.
 
-Basic functionality required by the assignment:
+First Story v3
 The 'user' can click on one of two random images to vote on a site to land on Mars,
 and have votes charted on the page.
 

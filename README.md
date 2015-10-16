@@ -22,3 +22,6 @@ Update 6: Removing reset / making pic clicks into next / further styling
 
 Update 7: Adding local storage, using grid to make responsive.
 
+Update 8: Removed much of the manual css, to get out of the way of skeleton.
+  Also added cancel reset button.
+

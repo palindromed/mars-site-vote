@@ -119,13 +119,21 @@ VoteTracker.prototype.retrieveData = function(ev) {
 
 VoteTracker.prototype.resetData = function (ev){
   document.getElementById('confirmButton').className = null;
+  document.getElementById('cancel').className = null;
   console.log('in reset');
 };
 
 VoteTracker.prototype.confirmData = function (ev) {
   localStorage.setItem('superKey', 'null');
   document.getElementById('confirmButton').className = "hidden";
+  document.getElementById('cancel').className = "hidden";
   console.log('in confirm');
+};
+
+VoteTracker.prototype.cancelReset = function (ev) {
+  document.getElementById('confirmButton').className = "hidden";
+  document.getElementById('cancel').className = "hidden";
+  console.log('in cancel');
 };
 
 function handleTheReset (event) {
@@ -152,4 +160,4 @@ document.getElementById('storeButton').addEventListener('click', pageOneTracker.
 document.getElementById('retrieveButton').addEventListener('click', pageOneTracker.retrieveData);
 document.getElementById('resetButton').addEventListener('click', pageOneTracker.resetData);
 document.getElementById('confirmButton').addEventListener('click', pageOneTracker.confirmData);
-
+document.getElementById('cancel').addEventListener('click', pageOneTracker.cancelReset);

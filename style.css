@@ -11,34 +11,33 @@ body {
 }
 
 h1, h2, h3 {
+  padding-left: 5px;
   font-family: 'Droid Serif' Times Serif;
   color: #0d0d0d;
 }
 
-h1 {
-  font-size: 3em;
-}
-
-p > div {
-  margin: auto;
+#directions {
+  margin-left: 5px;
 }
 
 img {
   width: 400px;
   height: 300px;
-  margin: 10px;
+  border: 2px solid #0d0d0d;
+  border-radius: 4px;
 }
 
 #image1 {
-  position: relative;
-  float: left;
-  display: inline;
+  float: center;
+  padding-left: 5px;
 }
 
 #image2 {
-  position: relative;
-  display: inline;
-  float: right;
+  float: center;
+}
+
+#buttons {
+  float: center;
 }
 
 canvas {
@@ -46,17 +45,8 @@ canvas {
   margin: 10px;
 }
 
-footer {
-  position: bottom;
-  margin: auto;
-}
-
 header {
   background-color: #2a558c;
-}
-
-p {
-  margin: 5px;
 }
 
 .hidden {
