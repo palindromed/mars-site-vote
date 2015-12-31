@@ -11,75 +11,75 @@
 
 (function(){
 
-	"use strict";
+  "use strict";
 
 	//Declare root variable - window in the browser, global on the server
-	var root = this,
-		previous = root.Chart;
+  var root = this;
+  var previous = root.Chart;
 
 	//Occupy the global variable of Chart, and create a simple base class
-	var Chart = function(context){
-		var chart = this;
-		this.canvas = context.canvas;
+  var Chart = function(context){
+	  var chart = this;
+    this.canvas = context.canvas;
 
-		this.ctx = context;
+    this.ctx = context;
 
 		//Variables global to the chart
-		var computeDimension = function(element,dimension)
+    var computeDimension = function(element,dimension)
 		{
-			if (element['offset'+dimension])
+      if (element['offset'+dimension])
 			{
-				return element['offset'+dimension];
-			}
+        return element['offset'+dimension];
+      }
 			else
 			{
-				return document.defaultView.getComputedStyle(element).getPropertyValue(dimension);
-			}
-		}
+        return document.defaultView.getComputedStyle(element).getPropertyValue(dimension);
+      }
+    };
 
-		var width = this.width = computeDimension(context.canvas,'Width');
-		var height = this.height = computeDimension(context.canvas,'Height');
+    var width = this.width = computeDimension(context.canvas,'Width');
+    var height = this.height = computeDimension(context.canvas,'Height');
 
 		// Firefox requires this to work correctly
-		context.canvas.width  = width;
-		context.canvas.height = height;
+    context.canvas.width = width;
+    context.canvas.height = height;
 
-		var width = this.width = context.canvas.width;
-		var height = this.height = context.canvas.height;
-		this.aspectRatio = this.width / this.height;
+    var width = this.width = context.canvas.width;
+    var height = this.height = context.canvas.height;
+    this.aspectRatio = this.width / this.height;
 		//High pixel density displays - multiply the size of the canvas height/width by the device pixel ratio, then scale.
-		helpers.retinaScale(this);
+    helpers.retinaScale(this);
 
-		return this;
-	};
+    return this;
+  };
 	//Globally expose the defaults to allow for user updating/changing
-	Chart.defaults = {
-		global: {
+  Chart.defaults = {
+    global: {
 			// Boolean - Whether to animate the chart
-			animation: true,
+      animation: true,
 
 			// Number - Number of animation steps
-			animationSteps: 60,
+      animationSteps: 60,
 
 			// String - Animation easing effect
-			animationEasing: "easeOutQuart",
+      animationEasing: "easeOutQuart",
 
 			// Boolean - If we should show the scale at all
-			showScale: true,
+      showScale: true,
 
 			// Boolean - If we want to override with a hard coded scale
-			scaleOverride: false,
+      scaleOverride: false,
 
 			// ** Required if scaleOverride is true **
 			// Number - The number of steps in a hard coded scale
-			scaleSteps: null,
+      scaleSteps: null,
 			// Number - The value jump in the hard coded scale
-			scaleStepWidth: null,
+      scaleStepWidth: null,
 			// Number - The scale starting value
-			scaleStartValue: null,
+      scaleStartValue: null,
 
 			// String - Colour of the scale line
-			scaleLineColor: "rgba(0,0,0,.1)",
+      scaleLineColor: "rgba(0,0,0,.1)",
 
 			// Number - Pixel width of the scale line
 			scaleLineWidth: 1,
@@ -103,7 +103,7 @@
 			scaleFontSize: 12,
 
 			// String - Scale label font weight style
-			scaleFontStyle: "normal",
+      scaleFontStyle: "normal",
 
 			// String - Scale label font colour
 			scaleFontColor: "#666",
@@ -3079,7 +3079,7 @@
 			helpers.each(this.segments,function(segment){
 				segment.save();
 			});
-			
+
 			this.reflow();
 			this.render();
 		},

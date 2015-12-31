@@ -10,31 +10,6 @@ body {
   background-color: #5ab8f3;
 }
 
-h1, h2, h3 {
-  padding-left: 5px;
-  font-family: 'Droid Serif' Times Serif;
-  color: #0d0d0d;
-}
-
-#directions {
-  margin-left: 5px;
-}
-
-img {
-  width: 400px;
-  height: 300px;
-  border: 2px solid #0d0d0d;
-  border-radius: 4px;
-}
-
-#image1 {
-  padding-left: 5px;
-}
-
-#image2 {
-  padding-left: 5px;
-}
-
 button {
   padding: 0 10px;
   text-transform: none;

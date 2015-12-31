@@ -10,22 +10,7 @@ var ImgObj = function (pImgFileLoc){
 };
 
 //gobal vars
-var imgFileLocations = [
-  "img/658668main_pia15685-full_full.jpg",
-  "img/658682main_pia15686_full.jpg",
-  "img/667877main_Grotzinger-1PIA15690_800-600.jpg",
-  "img/675225main_pia16029-43_800-600.jpg",
-  "img/676026main_pia16052-color-43_800-600.jpg",
-  "img/676039main_pia16053-color-43_800-600.jpg",
-  "img/678276main_pia16077-43_800-600.jpg",
-  "img/734386main_pia16768-43_800-600.jpg",
-  "img/PIA17766-800x600.jpg",
-  "img/PIA17946-800x600.jpg",
-  "img/PIA18083-800x600.jpg",
-  "img/PIA19803-800x600.jpg",
-  "img/PSP_008579_9020_descent_800-600.jpg",
-  "img/glacialcraters_mro.jpg"
-];
+
 var didReset = true;
 var whichSitesNow = [0 , 1];
 var imgArray = [];
@@ -40,12 +25,12 @@ var VoteTracker = function() {
 
   this.displayImg = function () {
     whichSitesNow = this.randomPickTwo();
-    this.point1 = this.findTagOne.appendChild(document.createElement('div'));
-    this.point2 = this.findTagTwo.appendChild(document.createElement('div'));
-    this.point1.innerHTML = "<img src=\'" + imgArray[whichSitesNow[0]].fileNameForImg + "\' alt='The first site to consider' title='This is the first landing site to consider for a mission to Mars. Click on the image to vote in favor.' \>";
-    this.point2.innerHTML = "<img src=\'" + imgArray[whichSitesNow[1]].fileNameForImg + "\' alt='The second site to consider' title='This is the second landing site to consider for a mission to Mars. Click on the image to vote in favor.' \>";
-    this.point1.addEventListener('click', this.handleImgClicks);
-    this.point2.addEventListener('click', this.handleImgClicks);
+
+    $('#image1').html("<img src=\'" + imgArray[whichSitesNow[0]].fileNameForImg + "\' alt='The first site to consider' title='This is the first landing site to consider for a mission to Mars. Click on the image to vote in favor.' \>");
+    $('#image2').html("<img src=\'" + imgArray[whichSitesNow[1]].fileNameForImg + "\' alt='The first site to consider' title='This is the first landing site to consider for a mission to Mars. Click on the image to vote in favor.' \>");
+
+    $('#image1').on('click', this.handleImgClicks);
+    $('#image2').on('click', this.handleImgClicks);
 
   };
   this.displayImg();
@@ -76,7 +61,7 @@ VoteTracker.prototype.populateChartData = function (pData) {
     pData.datasets[0].data[i] = imgArray[i].numberOfVotes;
   };
   return pData;
-}
+};
 
 VoteTracker.prototype.handleImgClicks = function (event) {
   var tagHandle = (event.currentTarget.parentElement.id == 'clickOne') ? 0 : 1;
@@ -116,27 +101,29 @@ VoteTracker.prototype.retrieveData = function(ev) {
 };
 
 VoteTracker.prototype.resetData = function (ev){
-  document.getElementById('confirmButton').className = null;
-  document.getElementById('cancel').className = null;
+  $('#confirmButton').removeClass('hidden');
+  $('#confirmButton').addClass(null);
+  $('#cancel').removeClass('hidden');
+  $('#cancel').addClass(null);
 };
 
 VoteTracker.prototype.confirmData = function (ev) {
   localStorage.setItem('superKey', 'null');
-  document.getElementById('confirmButton').className = "hidden";
-  document.getElementById('cancel').className = "hidden";
+  $('#confirmButton').addClass('hidden');
+  $('#cancel').addClass('hidden');
 };
 
 VoteTracker.prototype.cancelReset = function (ev) {
-  document.getElementById('confirmButton').className = "hidden";
-  document.getElementById('cancel').className = "hidden";
+  $('#confirmButton').addClass('hidden');
+  $('#cancel').addClass('hidden');
 };
 
 function handleTheReset (event) {
   didReset = true;
-  document.getElementById('clickOne').innerHTML = null;
-  document.getElementById('clickOne').className = null;
-  document.getElementById('clickTwo').innerHTML = null;
-  document.getElementById('clickTwo').className = null;
+  $('#clickOne').html(null);
+  $('#clickOne').addClass(null);
+  $('#clickTwo').html(null);
+  $('#clickTwo').addClass(null);
   pageOneTracker.displayImg();
 }
 
@@ -147,11 +134,11 @@ function raiseTheChartFlag() {
 //make the object, it calls all of the other constructors
 var pageOneTracker = new VoteTracker();
 //add listeners to the elements we want to get events from
-pageOneTracker.point1.addEventListener('click', pageOneTracker.handleImgClicks);
-pageOneTracker.point2.addEventListener('click', pageOneTracker.handleImgClicks);
+$(pageOneTracker).on('click', pageOneTracker.handleImgClicks);
+//$(pageOneTracker).on('click', pageOneTracker.handleImgClicks);
 
-document.getElementById('storeButton').addEventListener('click', pageOneTracker.storeData);
-document.getElementById('retrieveButton').addEventListener('click', pageOneTracker.retrieveData);
-document.getElementById('resetButton').addEventListener('click', pageOneTracker.resetData);
-document.getElementById('confirmButton').addEventListener('click', pageOneTracker.confirmData);
-document.getElementById('cancel').addEventListener('click', pageOneTracker.cancelReset);
+$('#storeButton').on('click', pageOneTracker.storeData);
+$('#retrieveButton').on('click', pageOneTracker.retrieveData);
+$('#resetButton').on('click', pageOneTracker.resetData);
+$('#confirmButton').on('click', pageOneTracker.confirmData);
+$('#cancel').on('click', pageOneTracker.cancelReset);
