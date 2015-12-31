@@ -61,7 +61,7 @@ VoteTracker.prototype.populateChartData = function (pData) {
     pData.datasets[0].data[i] = imgArray[i].numberOfVotes;
   };
   return pData;
-}
+};
 
 VoteTracker.prototype.handleImgClicks = function (event) {
   var tagHandle = (event.currentTarget.parentElement.id == 'clickOne') ? 0 : 1;
